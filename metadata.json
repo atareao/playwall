@@ -1,0 +1,14 @@
+{
+  "autor": "Lorenzo Carbonell",
+  "copyright": "2022",
+  "description": "Allows to set video loops, video streams, and ordinary videos as desktop wallpaper",
+  "gettext-domain": "playwall@atareao.es",
+  "icon": "playwall",
+  "name": "playwall",
+  "settings-schema": "org.gnome.shell.extensions.playwall",
+  "shell-version": ["42"],
+  "url": "https://www.atareao.es/aplicacion/playwall",
+  "uuid": "playwall@atareao.es",
+  "version": 1
+}
+
