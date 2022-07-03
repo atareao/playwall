@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-const {St} = imports.gi;
+const {St, GObject} = imports.gi;
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
 const Slider = imports.ui.Slider;
@@ -44,19 +44,46 @@ var PlayWallButton = GObject.registerClass(
             this.add_child(box);
 
             /* menu */
-            let _volume = new St.BoxLayout({
+            let volume = new St.BoxLayout({
                 vertical: false,
                 x_expand: true,
                 trackHover: false,
                 canFocus: false,
             });
-            let _volumeIcon = new St.Icon({styleClass: "audio-speakers-symbolic"});
-            let _volumeSlider = new Slider.Slider(0);
-            _volumeSlider.connect("value-changed", () =>{
-                this._onVolumeChanged();
+            let volumeIcon = new St.Icon({styleClass: "audio-speakers-symbolic"});
+            this.volumeSlider = new Slider.Slider(0);
+            this.volumeSliderValueChangedId = this.volumeSlider.connect("value-changed", (_, value, _) =>{
+                this._videoWallpaper.volume = value * 100;
             });
-            _volume.add_child(_volumeIcon);
-            _volume.add_child(_volumeSlider, {expand: true});
+            volume.add_child(volumeIcon);
+            volume.add_child(this.volumeSlider, {expand: true});
+
+            this.playbackSwitch = new PopupMenu.PopupSwitchMenuItem(_("Playback"));
+            this.playbackSwitchToggledId = this.playbackSwitch.connect("toggled", (actor)=>{
+                this._videoWallpaper.playback = actor.state;
+            });
+
+            this.loopSwitch = new PopupMenu.PopupSwitchMenuItem(_("Loop Video"));
+            this.loopSwitchToggledId = this.loopSwitch.connect("toggled", (actor)=>{
+                this._videoWallpaper.loop = actor.state;
+            });
+            this.settingsMenuItem = new PopupMenu.PopupMenuItem(_("Settings"));
+            this.settingsMenuItemActivateId = this.settingsMenuItem.connect('activate', () => {
+                ExtensionUtils.openPrefs();
+            });
+            this.menu.addMenuItem(volume);
+            this.menu.addMenuItem(this.playbackSwitch);
+            this.menu.addMenuItem(this.loopSwitch);
+            this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
+            this.menu.addMenuItem(this.settingsMenuItem);
+        }
+
+        destroy(){
+            this.volumeSlider.disconnect(this.volumeSliderValueChangedId);
+            this.playbackSwitch.disconnect(this.playbackSwitchToggledId);
+            this.loopSwitch.disconnect(this.loopSwitchToggledId);
+            this.settingsMenuItem.disconnect(this.settingsMenuItemActivateId);
+            super.destroy();
         }
     }
 );
