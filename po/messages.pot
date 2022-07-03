@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-03 12:58+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: schemas/org.gnome.shell.extensions.playwall.gschema.xml:6
+msgid "Selected video"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.playwall.gschema.xml:7
+msgid "The video to show as wallpaper"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.playwall.gschema.xml:11
+msgid "Volume"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.playwall.gschema.xml:12
+msgid "The volume of the video"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.playwall.gschema.xml:16 panelbutton.js:61
+msgid "Playback"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.playwall.gschema.xml:17
+msgid "If Playback the video"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.playwall.gschema.xml:21
+msgid "Loop"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.playwall.gschema.xml:22
+msgid "If play video continuously"
+msgstr ""
+
+#: panelbutton.js:66
+msgid "Loop Video"
+msgstr ""
+
+#: panelbutton.js:70
+msgid "Settings"
+msgstr ""
+
+#: prefs.js:48
+msgid "PlayWall options"
+msgstr ""
+
+#: prefs.js:58
+msgid "PlayWall Preferences"
+msgstr ""
+
+#: prefs.js:61
+msgid "About"
+msgstr ""
+
+#: prefs.js:70
+msgid "PlayWall Configuration"
+msgstr ""
+
+#: preferenceswidget.js:248
+msgid "Nothing"
+msgstr ""
+
+#: preferenceswidget.js:261
+msgid "True"
+msgstr ""
+
+#: preferenceswidget.js:274
+msgid "False"
+msgstr ""
+
+#: preferenceswidget.js:468 preferenceswidget.js:1001
+msgid "Edit"
+msgstr ""
+
+#: preferenceswidget.js:515 preferenceswidget.js:533 preferenceswidget.js:562
+msgid "Name"
+msgstr ""
+
+#: preferenceswidget.js:521 preferenceswidget.js:533 preferenceswidget.js:562
+msgid "Service"
+msgstr ""
+
+#: preferenceswidget.js:1011
+msgid "Remove"
+msgstr ""
