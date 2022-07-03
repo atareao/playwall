@@ -40,25 +40,34 @@ var VideoWallpaper = GObject.registerClass(
                 trackHover: false,
                 canFocus: false,
             });
+            this._playing = false;
+            this._video = null;
+            this._settings = null;
+            this._onSettingsChangedId = null;
 
-            this._settings = ExtensionUtils.getSettings();
         }
 
-        loadPreferences(){
+        _loadPreferences(){
             this._enabled = this._settings.get_boolean("enabled");
             this._volume = this._settings.get_int("volume");
             this._loop = this._settings.get_booleand("loope");
         }
 
         play(){
-            this._running = true;
-
+            this._playing = true;
             if(this._video == null){
                 ClutterGst.init(null);
                 this._video = new ClutterGst.VideoTexture({syncSize: false});
                 this._video.set_size(1, 1);
                 this._video.set_position(-1, -1);
                 this._video.set_opacity(0);
+                Main.layoutManager.uiGroup.add_actor(this._video);
+            }
+            if(this._settings == null){
+                this._settings = ExtensionUtils.getSettings();
+                this._onSettingsChangedId = this._settings.connect("changed", ()=>{
+                    this._loadPreferences();
+                });
 
             }
         }
