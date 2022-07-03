@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="playwall@atareao.es">
     <schema path="/org/gnome/shell/extensions/playwall/" id="org.gnome.shell.extensions.playwall">
-        <key name="selected-video" enum="org.gnome.shell.extensions.playwall.source-lang">
+        <key name="selected-video" type="s">
             <default>''</default>
             <summary>Selected video</summary>
             <description>The video to show as wallpaper</description>
