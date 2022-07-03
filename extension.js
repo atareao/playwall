@@ -270,3 +270,18 @@ class VideoWallpaper{
         this._settings.set_boolean(SETTINGS_LOOP, value);
     }
 }
+
+let videoWallpaper = null;
+function init() {
+    ExtensionUtils.initTranslations();
+}
+
+function enable() {
+    videoWallpaper = new VideoWallpaper();
+    videoWallpaper.enable();
+}
+
+function disable() {
+    videoWallpaper.disable();
+    videoWallpaper = null;
+}
