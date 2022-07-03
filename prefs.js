@@ -31,14 +31,12 @@ const AboutPage = Extension.imports.aboutpage.AboutPage;
 const Gettext = imports.gettext.domain(Extension.uuid);
 const _ = Gettext.gettext;
 
-const DialogWidgets = Extension.imports.dialogwidgets;
-
 function init() {
     ExtensionUtils.initTranslations();
 }
 
-var TranslateAssistantPreferencesWidget = GObject.registerClass(
-    class TranslateAssistantPreferencesWidget extends Widgets.ListWithStack{
+var PlayWallPreferencesWidget = GObject.registerClass(
+    class PlayWallPreferencesWidget extends Widgets.ListWithStack{
         _init(){
             super._init({});
 
@@ -47,49 +45,29 @@ var TranslateAssistantPreferencesWidget = GObject.registerClass(
             var settings = ExtensionUtils.getSettings();
 
             let indicatorSection = preferencesPage.addFrame(
-                _("Indicator options"));
+                _("PlayWall options"));
+            indicatorSection.addGSetting(settings, "selected_video");
             indicatorSection.addWidgetSetting(
                 settings,
-                "source-lang",
-                new Widgets.EnumSetting(settings, "source-lang"));
-            indicatorSection.addWidgetSetting(
-                settings,
-                "target-lang",
-                new Widgets.EnumSetting(settings, "target-lang"));
-            indicatorSection.addGSetting(settings, "split-sentences");
-            indicatorSection.addGSetting(settings, "preserve-formatting");
-            indicatorSection.addWidgetSetting(
-                settings,
-                "formality",
-                new Widgets.EnumSetting(settings, "formality"));
-            indicatorSection.addGSetting(settings, "url");
-            indicatorSection.addGSetting(settings, "apikey");
+                "volume",
+                new NumberSetting(settings, "volume", 0, 100, 0)
+            );
+            indicatorSection.addGSetting(settings, "playback");
+            indicatorSection.addGSetting(settings, "loop");
 
-
-            const themePage = new Widgets.Page();
-            const styleSection = themePage.addFrame(_("Theme"));
-            styleSection.addGSetting(settings, "notifications");
-            styleSection.addGSetting(settings, "darktheme");
-            styleSection.addWidgetSetting(
-                settings,
-                "keybinding-translate-clipboard",
-                new Widgets.ShortcutSetting(settings,
-                                            "keybinding-translate-clipboard"));
-
-            this.add(_("Translate Assistant Preferences"),
+            this.add(_("PlayWall Preferences"),
                      "preferences-other-symbolic",
                      preferencesPage);
-            this.add(_("Style"), "style", themePage);
             this.add(_("About"), "help-about-symbolic", new AboutPage());
         }
     }
 );
 
 function buildPrefsWidget() {
-    let preferencesWidget = new TranslateAssistantPreferencesWidget();
+    let preferencesWidget = new PlayWallPreferencesWidget();
     preferencesWidget.connect("realize", ()=>{
         const window = preferencesWidget.get_root();
-        window.set_title(_("Translate Assistant Configuration"));
+        window.set_title(_("PlayWall Configuration"));
         window.default_height = 800;
         window.default_width = 850;
     });

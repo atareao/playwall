@@ -1,55 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="playwall@atareao.es">
     <schema path="/org/gnome/shell/extensions/playwall/" id="org.gnome.shell.extensions.playwall">
-        <key name="source-lang" enum="org.gnome.shell.extensions.playwall.source-lang">
-            <default>'English (EN)'</default>
-            <summary>Source language</summary>
-            <description>Language of the text to be translated</description>
+        <key name="selected-video" enum="org.gnome.shell.extensions.playwall.source-lang">
+            <default>''</default>
+            <summary>Selected video</summary>
+            <description>The video to show as wallpaper</description>
         </key>
-        <key name="target-lang" enum="org.gnome.shell.extensions.playwall.target-lang">
-            <default>'Spanish (ES)'</default>
-            <summary>Target language</summary>
-            <description>The language into which the text should be translated</description>
+         <key name="volume" type="i">
+            <default>0</default>
+            <summary>Volume</summary>
+            <description>The volume of the video</description>
         </key>
-         <key name="split-sentences" type="b">
+         <key name="playback" type="b">
             <default>true</default>
-            <summary>Split sentences</summary>
-            <description>Sets whether the translation engine should first split the input into sentences</description>
+            <summary>Playback</summary>
+            <description>If Playback the video</description>
         </key>
-         <key name="preserve-formatting" type="b">
+         <key name="loop" type="b">
             <default>true</default>
-            <summary>Preserve formatting</summary>
-            <description>Sets whether the translation engine should respect the original formatting, even if it would usually correct some aspects</description>
-        </key>
-        <key name="formality" enum="org.gnome.shell.extensions.playwall.formality">
-            <default>'default'</default>
-            <summary>Formality</summary>
-            <description>Sets whether the translated text should lean towards formal or informal language</description>
-        </key>
-        <key name="url" type="s">
-            <default>"https://api-free.deepl.com/v2/translate"</default>
-            <summary>Url</summary>
-            <description>The url of DeepL</description>
-        </key>
-        <key name="apikey" type="s">
-            <default>""</default>
-            <summary>DeepL API key</summary>
-            <description>Set DeepL API key</description>
-        </key>
-        <key name="keybinding-translate-clipboard" type="as">
-            <default><![CDATA[['<Super>t']]]></default>
-            <summary>Shortcut</summary>
-            <description>Shortcut to translate the content of the clipboard</description>
-        </key>
-        <key name="notifications" type="b">
-            <default>false</default>
-            <summary>Show notifications</summary>
-            <description>Show notifications on translation</description>
-        </key>
-        <key name="darktheme" type="b">
-            <default>false</default>
-            <summary>Dark theme</summary>
-            <description>Enable dark theme otherwise light theme</description>
+            <summary>Loop</summary>
+            <description>If play video continuously</description>
         </key>
     </schema>
 </schemalist>
